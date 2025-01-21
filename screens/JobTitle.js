@@ -1,14 +1,119 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  TextInput,
+  StatusBar,
+  Image,
+} from 'react-native';
+import React from 'react';
+import IonIcons from 'react-native-vector-icons/Ionicons';
+import {TouchableOpacity} from 'react-native';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import Snackbar from 'react-native-snackbar';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const JobTitle = () => {
+const PasswordScreen = () => {
+  const [jobTitle, setJobTitle] = React.useState('');
+  const navigation = useNavigation();
+  const route = useRoute();
+  const email = route?.params?.email;
+  function handleNext() {
+    
+    navigation.navigate('HomeTown');
+  }
   return (
-    <View>
-      <Text>JobTitle</Text>
-    </View>
-  )
-}
+    <SafeAreaView
+      style={{
+        paddingTop: Platform.OS === 'android' ? 55 : 0,
+        flex: 1,
+        backgroundColor: 'white',
+      }}>
+      <StatusBar barStyle="dark-content" backgroundColor="white" />
 
-export default JobTitle
+      <View style={{marginTop: 30, marginHorizontal: 20}}>
+        {/* Row for icon and image */}
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginBottom: 0,
+          }}>
+          {/* Icon */}
+          <View
+            style={{
+              width: 44,
+              height: 44,
+              borderWidth: 2,
+              borderRadius: 22,
+              borderColor: 'black',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginRight: 5,
+            }}>
+            <IonIcons name="briefcase" size={26} color="black" />
+          </View>
 
-const styles = StyleSheet.create({})
+          {/* Image */}
+          <Image
+            style={{width: 100, height: 40}}
+            source={{
+              uri: 'https://cdn-icons-png.flaticon.com/128/10613/10613685.png',
+            }}
+          />
+        </View>
+
+        {/* Text */}
+        <View style={{marginTop: 30}}>
+          <Text
+            style={{
+              fontSize: 24,
+              fontWeight: 'bold',
+              fontFamily: 'Geezapro-Bold',
+            }}>
+            What's your Job Title?
+          </Text>
+          
+
+          <TextInput
+            onChangeText={jobTitle => setJobTitle(jobTitle)}
+            autoFocus
+            secureTextEntry={false}
+            value={jobTitle}
+            placeholder="Job Title"
+            placeholderTextColor={'#BEBEBE'}
+            style={{
+              marginVertical: 10,
+              marginTop: 20,
+              width: 340,
+              borderBottomColor: 'black',
+              borderBottomWidth: 1,
+              fontSize: 20,
+              fontFamily: 'Geezapro-Bold',
+              paddingBottom: 10,
+              color: 'black',
+            }}
+          />
+
+          
+        </View>
+        <TouchableOpacity
+          onPress={handleNext}
+          activeOpacity={0.4}
+          style={{marginTop: 40, marginLeft: 'auto'}}>
+          <IonIcons
+            name="chevron-forward-circle-outline"
+            size={44}
+            color="purple"
+          />
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+export default PasswordScreen;
+
+const styles = StyleSheet.create({});

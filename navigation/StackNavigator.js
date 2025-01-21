@@ -167,13 +167,8 @@ const AuthStack = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Looking For"
+        name="Looking-For"
         component={LookingFor}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="HomeTown"
-        component={HomeTown}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -184,6 +179,11 @@ const AuthStack = () => {
       <Stack.Screen
         name="Job Title"
         component={JobTitle}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HomeTown"
+        component={HomeTown}
         options={{headerShown: false}}
       />
       <Stack.Screen

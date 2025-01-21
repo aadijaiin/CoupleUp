@@ -111,7 +111,7 @@ const LocationScreen = () => {
   const fetchLocationFromGoogleAPI = async () => {
     try {
       const response = await fetch(
-        `https://www.googleapis.com/geolocation/v1/geolocate?key=key`,
+        `https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC6NiDxL-J8pGYQ5tuoOuZxfcrc5sn2qr8`,
         {
           method: 'POST',
         },
@@ -138,7 +138,7 @@ const LocationScreen = () => {
   const fetchAddress = async (latitude, longitude) => {
     try {
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=key`,
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyC6NiDxL-J8pGYQ5tuoOuZxfcrc5sn2qr8`,
       );
       const data = await response.json();
       if (data.results.length > 0) {
